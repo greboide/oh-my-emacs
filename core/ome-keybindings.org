@@ -61,6 +61,11 @@ Key bindings for oh-my-emacs, mainly imported from [[https://github.com/eschulte
 (global-set-key (kbd "C-x ^") 'join-line)
 #+END_SRC
 
+* mouse yank on minibuffer
+#+BEGIN_SRC emacs-lisp
+(define-key minibuffer-local-map [mouse-2] 'mouse-yank-primary)
+#+END_SRC
+
 * If you want to be able to M-x without meta
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)

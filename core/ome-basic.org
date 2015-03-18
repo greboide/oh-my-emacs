@@ -218,8 +218,8 @@ Commands]].
   :CUSTOM_ID: saveplace
   :END:
 
-When you visit a file, point goes to the last place where it was when you
-previously visited the same file. The following code comes from [[http://emacs-fu.blogspot.com/2009/05/remembering-your-position-in-file.html][emacs-fu]].
+  When you visit a file, point goes to the last place where it was when you
+  previously visited the same file. The following code comes from [[http://emacs-fu.blogspot.com/2009/05/remembering-your-position-in-file.html][emacs-fu]].
 
 #+NAME: saveplace
 #+BEGIN_SRC emacs-lisp
@@ -308,6 +308,22 @@ Ispell]]. The following code snippets comes from [[https://github.com/bbatsov/pr
       ispell-extra-args '("--sug-mode=ultra"))
 #+END_SRC
 
+* Flycheck-Irony
+  :PROPERTIES:
+  :CUSTOM_ID: flycheck-irony
+  :END:
+
+  flycheck irony as syntax checker interface
+
+#+NAME: flycheck
+#+BEGIN_SRC emacs-lisp
+(defun ome-flycheck-irony-setup ()
+(require 'flycheck-irony)
+(eval-after-load 'flycheck
+  '(add-to-list 'flycheck-checkers 'irony)))
+(ome-install 'flycheck-irony)
+#+END_SRC
+
 * Flycheck
   :PROPERTIES:
   :CUSTOM_ID: flycheck
@@ -319,10 +335,7 @@ extension for GNU Emacs 24.
 #+NAME: flycheck
 #+BEGIN_SRC emacs-lisp
 (defun ome-flycheck-setup ()
-  (eval-after-load 'flycheck
-    '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
   (add-hook 'prog-mode-hook 'flycheck-mode))
-
 (ome-install 'flycheck)
 #+END_SRC
 

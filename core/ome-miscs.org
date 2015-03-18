@@ -645,6 +645,43 @@ like.
 (ome-install 'diminish)
 #+END_SRC
 
+* Dict
+well dict is a breeze to those who like to understand the meaning of words
+i for one love it as its just a wrapper around command line pretty useful dict command!
+#+NAME: dict
+#+BEGIN_SRC emacs-lisp
+(defun ome-dict-setup ()
+  )
+(when (executable-find "dict")
+(ome-install 'dict))
+
+#+END_SRC
+
+* Circe
+#+NAME: dict
+#+BEGIN_SRC emacs-lisp
+(require 'lui-autopaste)
+(add-hook 'circe-channel-mode-hook 'enable-lui-autopaste)
+(add-hook 'circe-chat-mode-hook 'my-circe-prompt)
+(defun my-circe-prompt ()
+  (lui-set-prompt
+   (concat (propertize (concat (buffer-name) ">")
+                       'face 'circe-prompt-face)
+           " ")))
+(setq lui-flyspell-p t
+        lui-flyspell-alist '(("#hamburg" "german8")
+                             (".*" "american")))
+(setq circe-network-options
+      `(("Freenode"
+         :nick "gla"
+         :channels ("#emacs" "#ue4linux" "#blendercoders")
+         :nickserv-password "greboide"
+         )))
+#+END_SRC
+
+
+
+
 * Todo
 - Enable flyspell and ispell in text-mode.
 - Add a dictionary support, such as =sdcv=? Or a better translator support such

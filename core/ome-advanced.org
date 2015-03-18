@@ -92,7 +92,17 @@ Emacs session.
   (mapc
    (lambda (mode-hook)
      (add-hook mode-hook 'turn-off-evil-mode))
-   '(Info-mode-hook)))
+   '(Info-mode-hook))
+(define-key evil-normal-state-map "gh" 'windmove-left)
+(define-key evil-normal-state-map "gj" 'windmove-down)
+(define-key evil-normal-state-map "gk" 'windmove-up)
+(define-key evil-normal-state-map "gl" 'windmove-right)
+(define-key evil-normal-state-map "go" 'org-open-at-point)
+;; remove all keybindings from insert-state keymap so we can have emacs editing keybindings back
+;; but [escape] should switch back to normal state
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+)
 
 (ome-install 'evil)
 #+END_SRC
@@ -137,8 +147,8 @@ editing your document at your fingertips.
         "l" 'helm-locate
         "c" 'helm-colors
         "y" 'helm-show-kill-ring
-        "t" 'helm-top
         "m" 'helm-man-woman
+        "t" 'neotree-toggle
         "o" 'helm-occur
         "j" 'helm-M-x
         "e" 'helm-find-files
@@ -192,6 +202,60 @@ almost the same.
 #+BEGIN_SRC emacs-lisp
 (ome-install 'evil-surround)
 #+END_SRC
+
+* Evil Visualstar
+  Visualstar provides easy search from visual selection just hit * for
+  forward and # for backward search from selection
+#+NAME: evil-visualstar
+#+BEGIN_SRC emacs-lisp
+(defun ome-evil-visualstar-setup ()
+(eval-after-load 'evil-visualstar (global-evil-visualstar-mode))
+)
+(ome-install 'evil-visualstar)
+#+END_SRC
+
+* Neotree
+  Vim like Nerdtree
+
+#+NAME:emacs-neotree
+#+BEGIN_SRC emacs-lisp
+(defun ome-emacs-neotree-setup ()
+(add-hook 'neotree-mode-hook
+ (lambda ()
+   (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+   (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+   (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+   (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+	 (define-key evil-normal-state-local-map (kbd "ma") 'neotree-create-node)
+	 (define-key evil-normal-state-local-map (kbd "md") 'neotree-delete-node)
+	 (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
+	 (define-key evil-normal-state-local-map (kbd "mm") 'neotree-rename-node)
+))
+
+
+)
+(ome-install 'emacs-neotree)
+#+END_SRC
+
+
+* Key chord
+#+NAME: key chord
+#+BEGIN_SRC emacs-lisp
+(defun ome-key-chord-setup ()
+(eval-after-load 'key-chord (progn
+(setcdr evil-insert-state-map nil)
+   (key-chord-define evil-normal-state-map "ii" 'evil-force-normal-state)
+   (key-chord-define evil-visual-state-map "ii" 'evil-change-to-previous-state)
+   (key-chord-define evil-insert-state-map "ii" 'evil-normal-state)
+   (key-chord-define evil-insert-state-map "ii" 'evil-force-normal-state)
+   (key-chord-define evil-replace-state-map "ii" 'evil-normal-state)
+(setq key-chord-two-keys-delay 0.3)
+
+(key-chord-mode 1))
+))
+(ome-install 'key-chord)
+#+END_SRC
+
 
 * Expand-region
   :PROPERTIES:

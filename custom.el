@@ -62,3 +62,31 @@ inversion of gas-comment-region"
           (delete-char 1))
       (next-line))
     (goto-char end)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(circe-default-nick "gla")
+ '(circe-reduce-lurker-spam t)
+ '(custom-safe-themes
+   (quote
+    ("d9b9fe2ce66ddde133488cb544e643fd0eba4f89af513953eff5d65454b1cacc" default)))
+ '(flycheck-checkers
+   (quote
+    (irony ada-gnat asciidoc cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint d-dmd elixir emacs-lisp erlang eruby-erubis fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck haml handlebars haskell-ghc haskell-hlint html-tidy javascript-jshint javascript-eslint javascript-gjslint json-jsonlint less lua perl perl-perlcritic php php-phpmd php-phpcs puppet-parser puppet-lint python-flake8 python-pylint python-pycompile r-lintr racket rpm-rpmlint rst rst-sphinx ruby-rubocop ruby-rubylint ruby ruby-jruby rust sass scala scala-scalastyle scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim tex-chktex tex-lacheck texinfo verilog-verilator xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby)))
+ '(initial-frame-alist
+   (quote
+    ((vertical-scroll-bars)
+     (left-fringe . 8)
+     (right-fringe . 8)
+     (fullscreen . maximized))))
+ '(omnisharp-imenu-support t)
+ '(omnisharp-server-executable-path
+   "/home/glauber/work/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(show-paren-match ((t (:background "#222222")))))

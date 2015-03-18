@@ -95,7 +95,7 @@ starting point.
 ;; (global-set-key (kbd "<f11>") 'ome-toggle-fullscreen)
 #+END_SRC
 
-* Solarized Color Theme
+* Ujelly Color Theme
   :PROPERTIES:
   :CUSTOM_ID: color-theme
   :END:
@@ -120,26 +120,27 @@ theme.
   (set-face-attribute 'mode-line nil :box nil)
   (set-face-attribute 'mode-line-inactive nil :box nil))
 
-(defun ome-solarized-emacs-setup ()
+(defun ome-ujelly-theme-setup ()
   ;; make the fringe stand out from the background
-  (setq solarized-distinct-fringe-background t)
-  ;; make the modeline high contrast
-  (setq solarized-high-contrast-mode-line t)
-  ;; Use less bolding
-  (setq solarized-use-less-bold t)
-  ;; Use more italics
-  (setq solarized-use-more-italic t)
-  ;; Use less colors for indicators such as git:gutter, flycheck and similar.
-  (setq solarized-emphasize-indicators nil)
-
+;  (setq solarized-distinct-fringe-background t)
+;  ;; make the modeline high contrast
+;  (setq solarized-high-contrast-mode-line t)
+;  ;; Use less bolding
+;  (setq solarized-use-less-bold t)
+;  ;; Use more italics
+;  (setq solarized-use-more-italic t)
+;  ;; Use less colors for indicators such as git:gutter, flycheck and similar.
+;  (setq solarized-emphasize-indicators nil)
+;
   (setq x-underline-at-descent-line t)
 
   (ad-enable-advice 'load-theme 'around 'ome-load-theme)
   (ad-activate 'load-theme)
 
-  (load-theme 'solarized-dark t))
+  (load-theme 'ujelly t)
+)
 
-(ome-install 'solarized-emacs)
+(ome-install 'ujelly-theme)
 #+END_SRC
 
 ** Q&A
@@ -195,7 +196,7 @@ decide to give janathanchu's powerline a try. Hope it works as expected.
   :END:
 
 I think the inspiration of [[https://github.com/coldnew/linum-relative][linum-relative]] comes from [[https://github.com/myusuf3/numbers.vim][numbers.vim]]. Thanks
-[[https://github.com/vimeitor][vimeitor]] for methoning this for me, I tried and I found it's really useful. So
+[[https://github.com/vimeitor][vimeitor]] for mentioning this for me, I tried and I found it's really useful. So
 I made it a default for oh-my-emacs.
 
 #+NAME: linum-relative

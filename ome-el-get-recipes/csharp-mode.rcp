@@ -1,0 +1,5 @@
+(:name csharp-mode
+       :website "https://github.com:josteink/csharp-mode.git"
+       :description "This is a mode for editing C# in emacs. It's based on cc-mode, v5.30.3 and above."
+       :type git
+       :url "git@github.com:josteink/csharp-mode.git")

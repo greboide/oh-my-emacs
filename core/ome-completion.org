@@ -59,19 +59,18 @@ according to =ac-modes=, which in turn determines what major mode
 #+NAME: auto-complete
 #+BEGIN_SRC emacs-lisp
 (defun ome-auto-complete-setup ()
+(progn
   (require 'auto-complete-config)
-
-  (define-key ac-mode-map (kbd "M-/") 'ac-fuzzy-complete)
-  (dolist (ac-mode '(text-mode org-mode))
-    (add-to-list 'ac-modes ac-mode))
-  (dolist (ac-mode-hook '(text-mode-hook org-mode-hook prog-mode-hook))
-    (add-hook ac-mode-hook
-              (lambda ()
-                (setq ac-fuzzy-enable t)
-                (add-to-list 'ac-sources 'ac-source-files-in-current-dir)
-                (add-to-list 'ac-sources 'ac-source-filename))))
-
-  (ac-config-default))
+  (define-key ac-mode-map (kbd "M-/") 'ac-complete)
+;  (dolist (ac-mode '(text-mode org-mode))
+;    (add-to-list 'ac-modes ac-mode))
+;  (dolist (ac-mode-hook '(text-mode-hook org-mode-hook prog-mode-hook))
+;    (add-hook ac-mode-hook
+;              (lambda ()
+;                (setq ac-fuzzy-enable t)
+;                (add-to-list 'ac-sources 'ac-source-files-in-current-dir)
+;                (add-to-list 'ac-sources 'ac-source-filename))))
+  (ac-config-default)))
 
 (ome-install 'auto-complete)
 #+END_SRC
@@ -306,6 +305,44 @@ Additionally you have the following helm persistent actions
 
 (ome-install 'helm-descbinds)
 #+END_SRC
+
+* hydra
+  :PROPERTIES:
+  :CUSTOM_ID: helm-descbinds
+  :END:
+
+Hydra is an evil scheme to set modal actions by user on a easy way, so its
+pretty cool as we can have one key navigation on helm buffer narrowing for
+example.
+
+#+BEGIN_SRC emacs-lisp
+(defun ome-hydra-setup ()
+(eval-after-load 'hydra (lambda ()
+  (key-chord-define minibuffer-local-map
+  "jj"
+  (defhydra helm-like-unite ()
+    "vim movement"
+    ("?" helm-help "help")
+    ("<escape>" keyboard-escape-quit "exit")
+    ("<SPC>" helm-toggle-visible-mark "mark")
+    ("a" helm-toggle-all-marks "(un)mark all")
+    ;; not sure if there's a better way to do this
+    ("/" (lambda ()
+            (interactive)
+            (execute-kbd-macro [?\C-s]))
+         "search")
+    ("v" helm-execute-persistent-action)
+    ("g" helm-beginning-of-buffer "top")
+    ("G" helm-end-of-buffer "bottom")
+    ("j" helm-next-line "down")
+    ("k" helm-previous-line "up")
+    ("i" nil "cancel"))))))
+
+
+
+(ome-install 'hydra)
+#+END_SRC
+
 
 * Yasnippet
   :PROPERTIES:
