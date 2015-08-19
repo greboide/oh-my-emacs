@@ -91,7 +91,7 @@ starting point.
   (set-frame-parameter
    nil 'fullscreen
    (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
-
+(toggle-frame-fullscreen)
 ;; (global-set-key (kbd "<f11>") 'ome-toggle-fullscreen)
 #+END_SRC
 
@@ -162,9 +162,13 @@ inspired by [[https://github.com/Lokaltog/vim-powerline][vim-powerline]]. There'
 
 #+NAME: powerline
 #+BEGIN_SRC emacs-lisp
-(defun ome-emacs-powerline-setup ())
-
-(ome-install 'emacs-powerline)
+;(defun ome-emacs-powerline-setup ())
+;
+;(ome-install 'emacs-powerline)
+(defun ome-nyan-mode-setup ()
+(nyan-mode)
+(nyan-start-animation))
+(ome-install 'nyan-mode)
 #+END_SRC
 
 Actually, there're two packages as emacs's powerline:

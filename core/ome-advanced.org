@@ -220,20 +220,16 @@ almost the same.
 #+NAME:emacs-neotree
 #+BEGIN_SRC emacs-lisp
 (defun ome-emacs-neotree-setup ()
-(add-hook 'neotree-mode-hook
- (lambda ()
-   (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
-   (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-   (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-   (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
-	 (define-key evil-normal-state-local-map (kbd "ma") 'neotree-create-node)
-	 (define-key evil-normal-state-local-map (kbd "md") 'neotree-delete-node)
-	 (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
-	 (define-key evil-normal-state-local-map (kbd "mm") 'neotree-rename-node)
-))
-
-
-)
+  (add-hook 'neotree-mode-hook
+    (lambda ()
+      (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+      (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+      (define-key evil-normal-state-local-map (kbd "ma") 'neotree-create-node)
+      (define-key evil-normal-state-local-map (kbd "md") 'neotree-delete-node)
+      (define-key evil-normal-state-local-map (kbd "r") 'neotree-refresh)
+      (define-key evil-normal-state-local-map (kbd "mm") 'neotree-rename-node))))
 (ome-install 'emacs-neotree)
 #+END_SRC
 
@@ -249,7 +245,7 @@ almost the same.
    (key-chord-define evil-insert-state-map "ii" 'evil-normal-state)
    (key-chord-define evil-insert-state-map "ii" 'evil-force-normal-state)
    (key-chord-define evil-replace-state-map "ii" 'evil-normal-state)
-(setq key-chord-two-keys-delay 0.3)
+(setq key-chord-two-keys-delay 1)
 
 (key-chord-mode 1))
 ))

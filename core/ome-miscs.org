@@ -234,7 +234,9 @@ detailed differences, check [[https://github.com/syohex/emacs-git-gutter][git-gu
               (lambda ()
                 ;; set fringe width to better display
                 (setq left-fringe-width 10)
-                (setq right-fringe-width 4))))
+                (setq right-fringe-width 4)
+                ;; disable cache to better performance
+                (setq-default cache-long-scans nil))))
 
   ;; some keybindings
   (global-set-key (kbd "C-x v g") 'git-gutter:toggle)
@@ -248,7 +250,7 @@ detailed differences, check [[https://github.com/syohex/emacs-git-gutter][git-gu
   (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
   ;; improve performance
-  ;; (setq git-gutter:update-hooks '(after-save-hook after-revert-hook))
+  (setq git-gutter:update-hooks '(after-save-hook after-revert-hook))
 
   (require 'git-gutter-fringe)
   (global-git-gutter-mode))
@@ -657,6 +659,16 @@ i for one love it as its just a wrapper around command line pretty useful dict c
 
 #+END_SRC
 
+* Pastebin
+#+NAME: pastebin
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(require 'pastebin)
+(setq pastebin-unique-developer-api-key "0d068327f0f1414cfa1f7fbfa838e973") ;; from http://pastebin.com/api
+(setq pastebin-user-name "greboide")
+(setq pastebin-password "grimaldo")
+;(pastebin-login)
+#+END_SRC
 * Circe
 #+NAME: dict
 #+BEGIN_SRC emacs-lisp
@@ -678,9 +690,6 @@ i for one love it as its just a wrapper around command line pretty useful dict c
          :nickserv-password "greboide"
          )))
 #+END_SRC
-
-
-
 
 * Todo
 - Enable flyspell and ispell in text-mode.

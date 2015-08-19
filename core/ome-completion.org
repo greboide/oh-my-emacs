@@ -256,9 +256,10 @@ fallback. But I do suggest you to take some time to be familiar with helm.
 
   (global-set-key (kbd "C-x c g") 'helm-do-grep)
   (global-set-key (kbd "C-x c o") 'helm-occur)
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "<menu>") 'helm-M-x)
+  (global-set-key (kbd "C-x f") 'helm-find-files)
 
+  (global-set-key (kbd "C-x b") 'helm-for-files)
   ;; rebind tab to run persistent action
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
   ;; make TAB works in terminal
@@ -286,6 +287,51 @@ fallback. But I do suggest you to take some time to be familiar with helm.
 
 #+END_SRC
 
+* helm gtags
+  :PROPERTIES:
+  :CUSTOM_ID: helm-descbinds
+  :END:
+
+Helm Descbinds provides an interface to emacs’ describe-bindings making the
+currently active key bindings interactively searchable with helm.
+
+Additionally you have the following helm persistent actions
+- Execute the command
+- Describe the command
+- Find the command
+
+#+BEGIN_SRC emacs-lisp
+(defun ome-helm-gtags-setup ()
+
+(setq
+ helm-gtags-ignore-case t
+ helm-gtags-auto-update t
+ helm-gtags-use-input-at-cursor t
+ helm-gtags-pulse-at-cursor t
+ helm-gtags-prefix-key "\C-cg"
+ helm-gtags-suggested-key-mapping t
+ )
+
+(require 'helm-gtags)
+;; Enable helm-gtags-mode
+(add-hook 'dired-mode-hook 'helm-gtags-mode)
+(add-hook 'eshell-mode-hook 'helm-gtags-mode)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+(add-hook 'c++-mode-hook 'helm-gtags-mode)
+(add-hook 'asm-mode-hook 'helm-gtags-mode)
+
+(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
+(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
+(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
+(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+)
+
+(ome-install 'helm-gtags)
+
+
+#+END_SRC
 * helm-descbinds
   :PROPERTIES:
   :CUSTOM_ID: helm-descbinds
@@ -336,13 +382,21 @@ example.
     ("G" helm-end-of-buffer "bottom")
     ("j" helm-next-line "down")
     ("k" helm-previous-line "up")
+    ("l" helm-next-source "next source")
     ("i" nil "cancel"))))))
-
-
-
 (ome-install 'hydra)
 #+END_SRC
 
+* ido-ubiquitous
+  :PROPERTIES:
+  :CUSTOM_ID: ido-ubiquitous
+  :END:
+  I like ido even using helm for most things, so it makes a lot of sense to use ido everywhere.
+#+BEGIN_SRC emacs-lisp
+(defun ome-ido-ubiquitous-setup ()
+(ido-ubiquitous-mode))
+(ome-install 'ido-ubiquitous)
+#+END_SRC
 
 * Yasnippet
   :PROPERTIES:

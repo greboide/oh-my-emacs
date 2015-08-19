@@ -324,6 +324,21 @@ Ispell]]. The following code snippets comes from [[https://github.com/bbatsov/pr
 (ome-install 'flycheck-irony)
 #+END_SRC
 
+* auto-save
+  :PROPERTIES:
+  :CUSTOM_ID:
+  :END:
+  move auto save and backup files to a safe place.
+
+  #+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+      `((".*" . "~/.emacs.d/backups")))
+  (setq auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/backups" t)))
+
+
+  #+END_SRC
+
 * Flycheck
   :PROPERTIES:
   :CUSTOM_ID: flycheck

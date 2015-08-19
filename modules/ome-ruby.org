@@ -51,7 +51,18 @@ functions for font-locking, indentation and code navigation.
 #+NAME: ruby-mode
 #+BEGIN_SRC emacs-lisp
 (defun ome-ruby-mode-setup ()
+  (require 'ruby-mode)
   ;; Ah, this huge auto-mode-alist list comes from emacs prelude
+(defun seeing-is-believing ()
+  "Replace the current region (or the whole buffer, if none) with the output
+of seeing_is_believing."
+  (interactive)
+  (let ((beg (if (region-active-p) (region-beginning) (point-min)))
+        (end (if (region-active-p) (region-end) (point-max)))
+        (origin (point)))
+    (shell-command-on-region beg end "seeing_is_believing -x" nil 'replace)
+    (goto-char origin)))
+
   (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
@@ -62,9 +73,27 @@ functions for font-locking, indentation and code navigation.
   (add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-  (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode)))
+  (add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
 
+  (define-key ruby-mode-map  (kbd "C-c C-e") 'seeing-is-believing))
 (ome-ruby-mode-setup)
+#+END_SRC
+
+* bundler
+  :PROPERTIES:
+  :CUSTOM_ID: bundler
+  :END:
+  use bundler install from emacs, perfect for modifying gem file and keeping in
+  the loop
+
+#+BEGIN_SRC emacs-lisp
+
+(defun ome-bundler-setup ()
+
+)
+
+(ome-install 'bundler)
+
 #+END_SRC
 
 * Inf-ruby

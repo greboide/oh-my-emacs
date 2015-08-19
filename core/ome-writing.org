@@ -56,5 +56,85 @@ economics at the ohio state university, who maintains a lot of open source
 (ome-install 'markdown-mode)
 #+END_SRC
 
+* dictem
+  :PROPERTIES:
+  :CUSTOM_ID: dictem
+  :END:
+  Dictem is a dictd interface neatly integrated into emacs, you can install
+  your own server and databases via apt-get, there are a bunch of them,
+  including translation to-from many languages, its something very valuable to
+  learn new words i think, and emacs comes to the rescue
+
+#+BEGIN_SRC emacs-lisp
+
+(defun ome-dictem-setup ()
+(add-hook 'dictem-postprocess-match-hook
+          'dictem-postprocess-match)
+
+;; For highlighting the separator between the definitions found.
+;; This also creates hyperlink on database names.
+(add-hook 'dictem-postprocess-definition-hook
+          'dictem-postprocess-definition-separator)
+
+;; For creating hyperlinks in dictem buffer
+;; that contains definitions.
+(add-hook 'dictem-postprocess-definition-hook
+          'dictem-postprocess-definition-hyperlinks)
+
+;; For creating hyperlinks in dictem buffer
+;; that contains information about a database.
+(add-hook 'dictem-postprocess-show-info-hook
+          'dictem-postprocess-definition-hyperlinks)
+
+(define-key dictem-mode-map [tab] 'dictem-next-link)
+(define-key dictem-mode-map [(backtab)] 'dictem-previous-link)
+
+;(setq dictem-user-databases-alist
+;      '(("_en-en"  . ("foldoc" "gcide" "wn"))))
+
+;;; http://paste.lisp.org/display/89086
+(defun dictem-run-define-at-point-with-query ()
+  "Query the default dict server with the word read in within this function."
+  (interactive)
+  (let* ((default-word (thing-at-point 'symbol))
+         (default-prompt (concat "Lookup Word "
+                                 (if default-word
+                                     (concat "(" default-word ")") nil)
+                                 ": "))
+         (dictem-query
+          (funcall #'(lambda (str)
+                       "Remove Whitespace from beginning and end of a string."
+                       (replace-regexp-in-string "^[ \n\t]*\\(.*?\\)[ \n\t]*$"
+                                                 "\\1"
+                                                 str))
+                   (read-string default-prompt nil nil default-word))))
+    (if (= (length dictem-query) 0) nil
+      (dictem-run 'dictem-base-search "*" dictem-query "."))))
+
+(defun dictem-run-define-at-point ()
+  "dictem look up for thing at point"
+  (interactive)
+  (let* ((default-word (thing-at-point 'symbol))
+         (dictem-query
+          (funcall #'(lambda (str)
+                       "Remove Whitespace from beginning and end of a string."
+                       (replace-regexp-in-string "^[ \n\t]*\\(.*?\\)[ \n\t]*$"
+                                                 "\\1"
+                                                 str))
+                   default-word)))
+    (if (= (length dictem-query) 0) nil
+      (dictem-run 'dictem-base-search "*" dictem-query "."))))
+
+(global-set-key "\C-cd" 'dictem-run-define-at-point)
+(global-set-key "\C-cD" 'dictem-run-define-at-point-with-query)
+
+;(global-set-key "\C-zs" 'dictem-run-search)
+;(global-set-key "\C-zm" 'dictem-run-match)
+)
+
+(ome-install 'dictem)
+
+#+END_SRC
+
 * Todo
 - Integrate [[https://github.com/ppareit/graphviz-dot-mode][graphviz-dot-mode]]

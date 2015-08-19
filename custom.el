@@ -8,14 +8,13 @@
 (menu-bar-mode t)
 
 ;;; You email address
-(setq user-mail-address "xiaohanyu1988@gmail.com")
+(setq user-mail-address "glauber.prado83@gmail.com")
 
 ;;; Calendar settings
 ;; you can use M-x sunrise-sunset to get the sun time
-(setq calendar-latitude 39.9)
-(setq calendar-longitude 116.3)
-(setq calendar-location-name "Beijing, China")
-
+(setq calendar-latitude -23.266757)
+(setq calendar-longitude -45.94698339)
+(setq calendar-location-name "Jacarei, Brasil")
 ;;; Time related settings
 ;; show time in 24hours format
 (setq display-time-24hr-format t)
@@ -71,22 +70,31 @@ inversion of gas-comment-region"
  '(circe-reduce-lurker-spam t)
  '(custom-safe-themes
    (quote
-    ("d9b9fe2ce66ddde133488cb544e643fd0eba4f89af513953eff5d65454b1cacc" default)))
+    ("90e4b4a339776e635a78d398118cb782c87810cb384f1d1223da82b612338046" "d9b9fe2ce66ddde133488cb544e643fd0eba4f89af513953eff5d65454b1cacc" default)))
+ '(dictem-default-database "*")
+ '(dictem-default-strategy ".")
  '(flycheck-checkers
    (quote
     (irony ada-gnat asciidoc cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint d-dmd elixir emacs-lisp erlang eruby-erubis fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck haml handlebars haskell-ghc haskell-hlint html-tidy javascript-jshint javascript-eslint javascript-gjslint json-jsonlint less lua perl perl-perlcritic php php-phpmd php-phpcs puppet-parser puppet-lint python-flake8 python-pylint python-pycompile r-lintr racket rpm-rpmlint rst rst-sphinx ruby-rubocop ruby-rubylint ruby ruby-jruby rust sass scala scala-scalastyle scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim tex-chktex tex-lacheck texinfo verilog-verilator xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby)))
+ '(global-smart-tab-mode nil)
+ '(imaxima-use-maxima-mode-flag t)
  '(initial-frame-alist
    (quote
     ((vertical-scroll-bars)
      (left-fringe . 8)
-     (right-fringe . 8)
-     (fullscreen . maximized))))
+     (right-fringe . 8))))
+ '(nyan-animation-frame-interval 0.1)
+ '(nyan-mode t)
+ '(nyan-wavy-trail t)
  '(omnisharp-imenu-support t)
  '(omnisharp-server-executable-path
-   "/home/glauber/work/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe"))
+   "/home/glauber/work/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe")
+ '(x-select-enable-primary t)
+ '(yascroll:delay-to-hide nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(show-paren-match ((t (:background "#222222")))))
+ '(show-paren-match ((t (:background "#222222"))))
+ '(sp-show-pair-match-face ((t (:background "grey33")))))

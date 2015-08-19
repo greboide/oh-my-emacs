@@ -152,6 +152,43 @@ programming languages which extend CSS with programming language features, and
 (when (executable-find "lessc")
   (ome-install 'less-css-mode))
 #+END_SRC
+
+* scss
+  :PROPERTIES:
+  :CUSTOM_ID: scss
+  :END:
+
+Writing plain CSS is quite boring sometimes since CSS didn't support basic
+programming techniques such as variables. Thus some nerds create some
+programming languages which extend CSS with programming language features, and
+"compiles" to css when it is necessary. [[http://www.sass-lang.org/][SASS]] is one of them.
+#+BEGIN_SRC emacs-lisp
+
+(defun ome-scss-mode-setup ()
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode)))
+
+(ome-install 'scss-mode)
+
+#+END_SRC
+
+* helm-css-scss
+  :PROPERTIES:
+  :CUSTOM_ID: helm-css-scss
+  :END:
+  helm-css-scss
+
+#+BEGIN_SRC emacs-lisp
+
+(defun ome-helm-css-scss-setup ()
+  (define-key scss-mode-map (kbd "C-c C-z") 'helm-css-scss)
+
+)
+
+(ome-install 'helm-css-scss)
+
+#+END_SRC
+
 * rainbow-mode
   :PROPERTIES:
   :CUSTOM_ID: rainbow-mode
