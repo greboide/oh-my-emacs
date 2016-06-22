@@ -24,6 +24,7 @@
 
 ;; Now install el-get at the very first
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path "/home/glauber/.emacs.d/lisp")
 
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer

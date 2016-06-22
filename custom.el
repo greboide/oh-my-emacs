@@ -70,7 +70,7 @@ inversion of gas-comment-region"
  '(circe-reduce-lurker-spam t)
  '(custom-safe-themes
    (quote
-    ("90e4b4a339776e635a78d398118cb782c87810cb384f1d1223da82b612338046" "d9b9fe2ce66ddde133488cb544e643fd0eba4f89af513953eff5d65454b1cacc" default)))
+    ("1b1e54d9e0b607010937d697556cd5ea66ec9c01e555bb7acea776471da59055" "90e4b4a339776e635a78d398118cb782c87810cb384f1d1223da82b612338046" "d9b9fe2ce66ddde133488cb544e643fd0eba4f89af513953eff5d65454b1cacc" default)))
  '(dictem-default-database "*")
  '(dictem-default-strategy ".")
  '(flycheck-checkers
@@ -78,6 +78,7 @@ inversion of gas-comment-region"
     (irony ada-gnat asciidoc cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint d-dmd elixir emacs-lisp erlang eruby-erubis fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck haml handlebars haskell-ghc haskell-hlint html-tidy javascript-jshint javascript-eslint javascript-gjslint json-jsonlint less lua perl perl-perlcritic php php-phpmd php-phpcs puppet-parser puppet-lint python-flake8 python-pylint python-pycompile r-lintr racket rpm-rpmlint rst rst-sphinx ruby-rubocop ruby-rubylint ruby ruby-jruby rust sass scala scala-scalastyle scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim tex-chktex tex-lacheck texinfo verilog-verilator xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby)))
  '(global-smart-tab-mode nil)
  '(imaxima-use-maxima-mode-flag t)
+ '(inf-ruby-default-implementation "pry")
  '(initial-frame-alist
    (quote
     ((vertical-scroll-bars)
@@ -96,5 +97,6 @@ inversion of gas-comment-region"
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#ffffff" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight bold :height 128 :width normal :foundry "PfEd" :family "Aerial Mono"))))
  '(show-paren-match ((t (:background "#222222"))))
  '(sp-show-pair-match-face ((t (:background "grey33")))))

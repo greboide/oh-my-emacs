@@ -1,0 +1,22 @@
+# -*- mode: snippet; require-final-newline: true -*-
+# name: ome-snippet
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# key: om
+# binding: direct-keybinding
+# --
+
+* ${2:package-name}
+  :PROPERTIES:
+  :CUSTOM_ID: $2
+  :END:
+  $1
+
+#+BEGIN_SRC emacs-lisp
+
+(defun ome-$2-setup ()
+  $0
+  (require '$2))
+
+(ome-install '$2)
+
+#+END_SRC

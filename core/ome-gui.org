@@ -91,7 +91,7 @@ starting point.
   (set-frame-parameter
    nil 'fullscreen
    (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
-(toggle-frame-fullscreen)
+(toggle-frame-maximized)
 ;; (global-set-key (kbd "<f11>") 'ome-toggle-fullscreen)
 #+END_SRC
 
@@ -205,11 +205,25 @@ I made it a default for oh-my-emacs.
 
 #+NAME: linum-relative
 #+BEGIN_SRC emacs-lisp
-(defun ome-linum-relative-setup ()
-  (require 'linum-relative))
 
-(ome-install 'linum-relative)
+(require 'relative-linum)
+
 #+END_SRC
+
+* vi-tilde-fringe-mode
+  :PROPERTIES:
+  :CUSTOM_ID:vi-tilde-fringe-mode
+  :END:
+  vi-tilde-fringe-mode
+
+  #+BEGIN_SRC emacs-lisp
+    (defun ome-vi-tilde-fringe-setup ()
+    (require 'vi-tilde-fringe)
+      (global-vi-tilde-fringe-mode))
+
+    (ome-install 'vi-tilde-fringe)
+
+  #+END_SRC
 
 * Todo
 ** Speedbar

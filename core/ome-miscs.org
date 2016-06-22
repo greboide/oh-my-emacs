@@ -691,6 +691,22 @@ i for one love it as its just a wrapper around command line pretty useful dict c
          )))
 #+END_SRC
 
+* smartscan
+  :PROPERTIES:
+  :CUSTOM_ID: smartscan
+  :END:
+  smartscan is a easy way to traverse the file and find symbol-at-point
+
+#+BEGIN_SRC emacs-lisp
+
+(defun ome-smartscan-setup ()
+  (global-smartscan-mode)
+  (require 'smartscan))
+
+(ome-install 'smartscan)
+
+#+END_SRC
+
 * Todo
 - Enable flyspell and ispell in text-mode.
 - Add a dictionary support, such as =sdcv=? Or a better translator support such
